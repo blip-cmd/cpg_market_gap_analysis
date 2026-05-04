@@ -6,6 +6,8 @@
 [![Pandas](https://img.shields.io/badge/library-pandas-150458.svg?style=flat&logo=pandas)](https://pandas.pydata.org/)
 [![Seaborn](https://img.shields.io/badge/library-seaborn-3776AB.svg?style=flat&logo=python)](https://seaborn.pydata.org/)
 
+**Topics:** `Data Engineering` | `Market Gap Analysis` | `Data Visualization` | `Blue Ocean Strategy`
+
 ---
 
 ## 🎯 Project Overview
