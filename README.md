@@ -13,7 +13,7 @@ This project delivers a high-fidelity **CPG Market Gap Analysis** for **Helix CP
 
 ### 🔗 Project Ecosystem
 *   **Technical Notebook:** [Deep-Dive Analysis](notebook_v2.ipynb)
-*   **Live Strategy Deck:** [Interactive Presentation](index.html)
+*   **Interactive Presentation:** [Live Strategy Deck](https://cpg-market-gap-analysis.onrender.com)
 *   **Interactive Dashboard:** [Looker Studio Reporting](https://datastudio.google.com/reporting/34881442-2f4f-48c8-a6eb-f5186f5a4d28)
 *   **Executive Summary:** [Video Walkthrough](https://youtu.be/yhNVJgISP4E)
 
@@ -72,4 +72,4 @@ Distributed under the **GNU General Public License v3.0**. See `LICENSE` for mor
 ---
 
 **Developed by Ryan Nii Akwei Brown**  
-*Data Engineering Applicant | Helix CPG Market Strategy*
+*Working with data consistently improves recall, strengthens active learning, and keeps technical skills sharp.*
