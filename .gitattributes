@@ -1,0 +1,8 @@
+# Exclude HTML files from language statistics to prioritize Python (Notebook)
+*.html linguist-documentation
+assets/* linguist-documentation
+*.png linguist-documentation
+*.pbix linguist-documentation
+*.pdf linguist-documentation
+*.csv linguist-generated
+*.xlsx linguist-generated
