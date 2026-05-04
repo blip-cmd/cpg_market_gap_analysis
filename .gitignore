@@ -1,0 +1,11 @@
+/.kilocode
+/.vscode
+/cleaned_snack_data.csv
+/cleaned_snack_openfoodfacts_data.xlsx
+/openfoodfacts.pbix
+/pbi visual-report.pdf
+point5mil.csv
+cleaned_snack_data_v1.csv
+
+# Independent Template Repository
+presentation-template/
