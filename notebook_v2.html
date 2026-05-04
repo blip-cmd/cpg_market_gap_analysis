@@ -8279,7 +8279,7 @@ Download complete. File saved as: point5mil.csv
     <span class="n">df</span><span class="p">[</span><span class="s1">'nutrient_density'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'proteins_100g'</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'sugars_100g'</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
     
     <span class="c1"># 1. Isolate the 'Blue Ocean' Leaders (The High-Protein/Low-Sugar cluster)</span>
-    <span class="c1"># Using the exact thresholds from our Looker Studio dashboard (4.2g and 4.6g)</span>
+    <span class="c1"># Using the exact thresholds from our Data Studio dashboard (4.2g and 4.6g)</span>
     <span class="n">leaders</span> <span class="o">=</span> <span class="n">df</span><span class="p">[(</span><span class="n">df</span><span class="p">[</span><span class="s1">'proteins_100g'</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">4.2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'sugars_100g'</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">4.6</span><span class="p">)]</span>
     
     <span class="c1"># 2. Mine ALL words from the ingredients of these leaders</span>

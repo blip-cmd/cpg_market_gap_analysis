@@ -16,7 +16,7 @@ This project delivers a high-fidelity **CPG Market Gap Analysis** for **Helix CP
 ### 🔗 Project Ecosystem
 *   **Technical Notebook:** [Deep-Dive Analysis](notebook_v2.ipynb)
 *   **Interactive Presentation:** [Live Strategy Deck](https://cpg-market-gap-analysis.onrender.com)
-*   **Interactive Dashboard:** [Looker Studio Reporting](https://datastudio.google.com/reporting/34881442-2f4f-48c8-a6eb-f5186f5a4d28)
+*   **Interactive Dashboard:** [Data Studio Reporting](https://datastudio.google.com/reporting/34881442-2f4f-48c8-a6eb-f5186f5a4d28)
 *   **Executive Summary:** [Video Walkthrough](https://youtu.be/yhNVJgISP4E)
 
 ---
