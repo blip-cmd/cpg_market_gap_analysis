@@ -1,77 +1,53 @@
-# 🍎 The "Sugar Trap" Market Gap Analysis
-### Strategic Blue Ocean Mapping for Helix CPG Partners
+# CPG Market Gap Analysis
 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/release/python-380/)
-[![Pandas](https://img.shields.io/badge/library-pandas-150458.svg?style=flat&logo=pandas)](https://pandas.pydata.org/)
-[![Seaborn](https://img.shields.io/badge/library-seaborn-3776AB.svg?style=flat&logo=python)](https://seaborn.pydata.org/)
+An exploratory look at sugar and protein in packaged foods, using Open Food Facts data. I built it in May 2026 as an applicant challenge; the client in the brief was Helix CPG Partners. The question: where might there be room for high-protein, low-sugar products?
 
-**Topics:** `Data Engineering` | `Market Gap Analysis` | `Data Visualization` | `Blue Ocean Strategy`
+- [Notebook](notebook_v2.ipynb)
+- [Presentation](https://cpg-market-gap-analysis.onrender.com)
+- [Dashboard](https://datastudio.google.com/reporting/34881442-2f4f-48c8-a6eb-f5186f5a4d28)
+- [Video walkthrough](https://youtu.be/yhNVJgISP4E)
 
----
+## Data flow
 
-## 🎯 Project Overview
-This project delivers a high-fidelity **CPG Market Gap Analysis** for **Helix CPG Partners**. By analyzing a massive sample from the Open Food Facts dataset, we've identified a "Blue Ocean" opportunity in the plant-based snack sector: **High-Protein, Low-Sugar, and Low-Sodium** alternatives.
+The raw dataset is over 12 GB. The notebook does not process all of it.
 
-### 🔗 Project Ecosystem
-*   **Technical Notebook:** [Deep-Dive Analysis](notebook_v2.ipynb)
-*   **Interactive Presentation:** [Live Strategy Deck](https://cpg-market-gap-analysis.onrender.com)
-*   **Interactive Dashboard:** [Data Studio Reporting](https://datastudio.google.com/reporting/34881442-2f4f-48c8-a6eb-f5186f5a4d28)
-*   **Executive Summary:** [Video Walkthrough](https://youtu.be/yhNVJgISP4E)
+| Step | Rows |
+| :--- | ---: |
+| Streamed from the start of the file, in chunks of 50,000 | 500,000 |
+| Random sample of those rows | 200,000 |
+| After dropping missing names or nutrients and impossible values | 42,149 |
+| After keeping the mapped categories | 14,017 |
 
----
+Only five columns are read, and the two numeric columns are downcast to `float32` after loading, to keep memory use low.
 
-## 🚀 Strategic Discovery: The Empty Quadrant
-Traditional snacks are saturated with sugar (averaging 30g/100g). Our analysis pinpointed a specific technical gap where demand for health is not met by current inventory.
+## What it shows
 
-### Market Density vs. Opportunity
-| Red Ocean (High Competition) | Blue Ocean (The Gap) |
-| :--- | :--- |
-| High Sugar (>15g) | **Low Sugar (< 4.6g)** |
-| Low/Medium Protein | **High Protein (> 4.2g)** |
-| High Sodium Dependency | **Low Sodium Integrity** |
+- The target area is above 4.2 g protein and below 4.6 g sugar per 100 g.
+- Each product gets a nutrient density score: protein / (sugar + 1).
+- Counting words in the ingredient lists of products in that area gives flour (4,250), wheat (3,757), acid (3,227), salt (2,849) and water (1,835) as the most frequent.
 
-![Market Density Analysis](blue_ocean_hex_bin.png)
-*Hexagonal binning density analysis revealing the "Red Ocean" concentration vs. the "Blue Ocean" opportunity.*
+![Density of products by sugar and protein](blue_ocean_hex_bin.png)
 
----
+![Sugar against protein by category](blue_ocean_scatter_plot.png)
 
-## 🛠️ Technical Implementation
+## Limits and corrections
 
-### 1. Memory-Efficient Data Engineering
-To handle the **12GB raw dataset** on local hardware, I implemented a **chunked streaming architecture**:
-*   **Stream Processing:** Utilized `chunksize` to ingest 500,000 records in 50k batches.
-*   **Memory Optimization:** Immediate downcasting to `float32` and selective column loading reduced RAM overhead by ~70%.
-*   **Statistical Sampling:** Extracted a 200,000-row randomized sample to ensure 99% confidence.
+- **Not a random sample of the whole dataset.** The sample comes from the first 500,000 rows, so it may not represent the market.
+- **The 78% salt figure was not a share of products.** It divides the number of times "salt" appears by the number of products, and a product can mention salt more than once.
+- **Sodium was not measured.** No sodium or salt column is loaded, so low sodium is an idea to test, not a finding.
+- **The target area is not empty,** and the data has no sales or demand figures, so it cannot prove unmet demand.
+- The notebook, presentation, dashboard and video predate these corrections and may still state the earlier claims.
 
-### 2. Feature Engineering & NLP
-*   **Nutrient Density Score:** Calculated as $\frac{Proteins}{(Sugars + 1)}$ to quantify nutritional value per "sugar overhead."
-*   **Ingredient Mining:** Developed Regex-based NLP to parse `ingredients_text`. 
-*   **The "Salt Trap" Discovery:** Natural language processing revealed that **78% of high-protein leaders** rely on added sodium for flavor—defining our primary R&D differentiator: **Flavor without Sodium.**
+## Run it
 
-![Scatter Plot Analysis](blue_ocean_scatter_plot.png)
-*Correlation analysis across high-level business buckets: Snacks, Beverages, Dairy, Plant-based, and Cereals.*
-
----
-
-## 📋 Quick Start
-
-### Prerequisites
 ```bash
 pip install pandas numpy matplotlib seaborn
 ```
 
-### Running the Analysis
-1.  Clone the repository.
-2.  Open `notebook_v2.ipynb` in Jupyter or VS Code.
-3.  The notebook will automatically handle data ingestion (cached locally as `point5mil.csv`).
+Open `notebook_v2.ipynb` in Jupyter or VS Code. It streams the data and saves it as `point5mil.csv`.
 
----
+## License
 
-## ⚖️ License
-Distributed under the **GNU General Public License v3.0**. See `LICENSE` for more information.
+GNU General Public License v3.0. See [LICENSE](LICENSE).
 
----
-
-**Developed by Ryan Nii Akwei Brown**  
-*Working with data consistently improves recall, strengthens active learning, and keeps technical skills sharp.*
+**Author:** Ryan Nii Akwei Brown
